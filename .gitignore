@@ -1,0 +1,8 @@
+# Ignore environment variables.
+/.env
+
+# Ignore Gemfile lock file.
+/Gemfile.lock
+
+# Ignore byebug history file.
+/byebug_history
