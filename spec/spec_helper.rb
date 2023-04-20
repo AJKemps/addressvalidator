@@ -1,5 +1,4 @@
 require 'rspec'
-require 'pry'
 require 'byebug'
 require_relative '../lib/address_validator'
 require_relative '../lib/api_client'
