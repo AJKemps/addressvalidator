@@ -2,6 +2,9 @@ require 'httparty'
 require 'yaml'
 
 class APIClient
+  # The APIClient class is responsible for making the API request to the SmartyStreets API
+  # and returning the response body as a JSON object to the AddressValidator class
+
   include HTTParty
   base_uri 'https://us-street.api.smartystreets.com'
 

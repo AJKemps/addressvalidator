@@ -13,20 +13,22 @@ describe CSVReader do
       end
     end
 
-    context 'when reading from piped input' do
-      let(:piped_input) { StringIO.new("Street,City,Zip Code\n143 E Main St,Columbus,43215") }
-        subject(:csv_reader) { CSVReader.new }
+    context "when headers are invalid" do
+      let(:invalid_headers_file) { "spec/fixtures/bad_headers.csv" }
+      let(:csv_reader) { CSVReader.new(invalid_headers_file) }
 
-        before do
-          allow(ARGF).to receive(:read).and_return(piped_input.read)
-        end
-  
-        it 'returns an array of address objects' do
-          addresses = csv_reader.read_addresses
-          expect(addresses).to be_an_instance_of(Array)
-          expect(addresses.first).to eq({ street: '143 E Main St', city: 'Columbus', zip_code: '43215' })
-        end
+      it "raises an error" do
+        expect { csv_reader.read_addresses }.to raise_error(StandardError, /CSV file headers do not match expected headers/)
+      end
+    end
+
+    context "when row values are invalid" do
+      let(:invalid_row_value_file) { "spec/fixtures/bad_row.csv" }
+      let(:csv_reader) { CSVReader.new(invalid_row_value_file) }
+
+      it "raises an error" do
+        expect { csv_reader.read_addresses }.to raise_error(StandardError, /CSV row does not contain the expected number of fields/)
       end
     end
   end
-  
+end
