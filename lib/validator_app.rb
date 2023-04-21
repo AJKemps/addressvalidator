@@ -5,7 +5,7 @@ require_relative 'cli_writer'
 
 class ValidatorApp
   # The ValidatorApp class is responsible for orchestrating the flow of the application
-  # and is the only class that is called from the bin/validator script
+  # and is the only class that is called from the app's root validator script
 
   def initialize(file_path = nil)
     @csv_reader = CSVReader.new(file_path)
