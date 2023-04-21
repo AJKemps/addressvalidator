@@ -1,3 +1,8 @@
+require_relative 'address_validator'
+require_relative 'api_client'
+require_relative 'csv_reader'
+require_relative 'cli_writer'
+
 class ValidatorApp
   def initialize(file_path = nil)
     @csv_reader = CSVReader.new(file_path)
