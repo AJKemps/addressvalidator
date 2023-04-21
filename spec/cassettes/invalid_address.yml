@@ -1,0 +1,33 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://us-street.api.smartystreets.com/street-address?auth-id=2e2c0e0c-f754-dc4c-d0aa-b3e21ac1b2e9&auth-token=ksNpuzXvcRzuEWE1bcxd&city=Title&license=us-core-cloud&street=1%20Empora%20St&zipcode=11111
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 21 Apr 2023 01:36:50 GMT
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: "[]"
+  recorded_at: Fri, 21 Apr 2023 01:36:50 GMT
+recorded_with: VCR 6.1.0
