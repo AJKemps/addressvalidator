@@ -21,5 +21,21 @@ describe APIClient do
         expect(response.length).to eq(0)
       end
     end
+
+    context 'when the API request returns an unauthorized error' do
+      before do
+        allow(api_client).to receive(:query_params).and_wrap_original do |original_method, *args|
+          params = original_method.call(*args)
+          params.except(:"auth-id", :"auth-token")
+        end
+      end
+    
+      it 'raises an error with the response code 401' do
+        VCR.use_cassette('api_client_401_unauthorized') do
+          expect { api_client.validate_address(VALID_ADDRESS) }.to raise_error("API request failed with code 401")
+        end
+      end
+    end
+    
   end
 end

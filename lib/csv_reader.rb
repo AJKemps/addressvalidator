@@ -5,7 +5,7 @@ class CSVReader
   # it then validates the format of the data and returns an array of address objects
   # if the format is invalid, it raises an error
 
-  EXPECTED_HEADERS = ['Street', 'City', 'Zip Code']
+  EXPECTED_HEADERS = ['Street', 'City', 'Zip Code'].freeze
 
   def initialize(file_path)
     @file_path = file_path
