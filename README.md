@@ -1,7 +1,7 @@
 # US Address Validator
 
 ## Introduction
-The goal of this project is to create a command-line program that validates a US address using the SmartyStreets US Address Verification API. The program will read input from a CSV file and output the original address and the corrected address or "Invalid Address" if the address cannot be validated.
+This is a command-line program that validates a US address using the SmartyStreets US Address Verification API. The program will read input from a CSV file and output the original address and the corrected address or "Invalid Address" if the address cannot be validated.
 
 ### Example IO
 
@@ -27,14 +27,14 @@ The output should be:
 - [Thought Process](#thought-process)
 
 ## Getting Started
-1. Clone the repository.
+1. Clone the repository and `cd` to the project's root directory.
 2. Install dependencies: `bundle install`.
 3. Replace the placeholder API keys with your own API keys in `config.yml`.
 4. Run the program as described in the [Running the Program](#running-the-program) section.
 5. Run tests as described in the [Running Tests](#running-tests) section.
 
 ## Running the Program
-Provide the file path as a command-line argument: `ruby validator.rb input.csv`
+Provide the file path as a command-line argument in the root directory: `ruby validator.rb input.csv`
 
 The input format is CSV with the following fields: Street, City, and Zip Code.
 
@@ -53,8 +53,7 @@ These three concerns will be managed by a mediator class, ValidatorApp, that sim
 ### Extracting addresses from the CSV file
 - The CSVReader class will be responsible for reading the input CSV file. It will use Ruby's built-in CSV library to parse the CSV data into a collection of address objects.
 ### Validating addresses against the API
-Address validation can be broken down into two independent pieces: the APIClient class, and the AddressValidator class, which makes use of the APIClient to package data into an extendible format for the rest of the app. 
-- The APIClient class will handle making requests to the SmartyStreets API. It will use the httparty gem to simplify HTTP requests and manage the API keys.
+Address validation can be broken down into two pieces: the APIClient class, and the AddressValidator class, which makes use of the APIClient to package data into an extendible format for the rest of the app. 
 - The AddressValidator class will use the APIClient class to validate the addresses read from the input, and return a array of hash-objects containing both the original and validated addresses. Separating the APIClient from the Validator class makes it easier to change or adjust both the API service and data format as the needs of the application evolve.
 ### Formatting and printing the validated addresses to the CLI
 - The CLIWriter class is responsible for formatting and printing the output data to the console.
