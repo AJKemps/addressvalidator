@@ -58,4 +58,4 @@ Address validation can be broken down into two pieces: the APIClient class, and 
 The CLIWriter class is responsible for formatting and printing the output data to the console.
 
 ## Testing
-The rspec gem will be used for testing. The test suite focuses on unit testing of individual classes, and also includes a few end-to-end integration tests. We will also use stubbing and mocking to prevent excessive API requests during testing.
+The rspec gem will be used for testing. The test suite focuses on unit testing of individual classes, and also includes a few end-to-end integration tests. It uses stubbing and mocking to prevent excessive API requests during testing.
