@@ -1,4 +1,5 @@
 require 'spec_helper'
+require_relative 'fixtures/addresses'
 
 describe ValidatorApp do
   let(:file_path) { 'spec/fixtures/input.csv' }
@@ -16,15 +17,15 @@ describe ValidatorApp do
       allow(AddressValidator).to receive(:new).and_return(address_validator)
       allow(CLIWriter).to receive(:new).and_return(cli_writer)
 
-      allow(csv_reader).to receive(:read_addresses).and_return([{ street: '143 E Main St', city: 'Columbus', zip_code: '43215' }])
-      allow(address_validator).to receive(:validate).and_return('143 E Main St, Columbus, 43215-5370')
-      allow(cli_writer).to receive(:print_addresses)
+      allow(csv_reader).to receive(:read_addresses).and_return(ADDRESSES)
+      allow(address_validator).to receive(:validate_addresses).and_return(VALIDATED_ADDRESSES)
+      allow(cli_writer).to receive(:run)
     end
 
     it 'reads input, validates addresses, and writes output' do
       expect(csv_reader).to receive(:read_addresses)
-      expect(address_validator).to receive(:validate)
-      expect(cli_writer).to receive(:print_addresses)
+      expect(address_validator).to receive(:validate_addresses)
+      expect(cli_writer).to receive(:run)
 
       validator_app.run
     end
