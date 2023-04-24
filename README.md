@@ -24,7 +24,6 @@ The output should be:
 - [Getting Started](#getting-started)
 - [Running the Program](#running-the-program)
 - [Running Tests](#running-tests)
-- [Project Structure](#project-structure)
 - [Thought Process](#thought-process)
 
 ## Getting Started
