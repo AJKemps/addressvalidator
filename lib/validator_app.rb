@@ -17,17 +17,12 @@ class ValidatorApp
   def run
     # grab the addresses from the input file
     addresses = @csv_reader.read_addresses
-    # instantiate an empty array to store the output data
-    output_data = []
 
-    # iterate over the addresses and validate each one, then add the original and corrected address to the output_data array
-    addresses.each do |address|
-      original_address = "#{address[:street]}, #{address[:city]}, #{address[:zip_code]}"
-      corrected_address = @address_validator.validate(address)
-      output_data << { original: original_address, corrected: corrected_address }
-    end
+    # grab the validated addresses from the API
 
-    # print the output data to the console
-    @cli_writer.print_addresses(output_data)
+    validated_addresses =  @address_validator.validate_addresses(addresses)
+
+    # pass the validated addresses to the CLIWriter class to print to the console
+    @cli_writer.run(validated_addresses)
   end
 end

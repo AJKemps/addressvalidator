@@ -33,6 +33,7 @@ class APIClient
       "auth-id": @auth_id,
       "auth-token": @auth_token,
       license: 'us-core-cloud',
+      candidates: 1,
     }
   end
 end

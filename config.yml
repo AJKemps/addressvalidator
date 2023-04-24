@@ -1,3 +1,6 @@
+# in a production scenario, we'd want to hide these in an env variable
+# and remove from git commit history, but leaving these here now for simplicity's sake
+# and can rotate them with Smarty if need-be 
 smarty:
   auth_id: 2e2c0e0c-f754-dc4c-d0aa-b3e21ac1b2e9
   auth_token: ksNpuzXvcRzuEWE1bcxd

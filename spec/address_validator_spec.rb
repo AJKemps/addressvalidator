@@ -5,22 +5,16 @@ describe AddressValidator do
   let(:api_client) { APIClient.new }
   subject(:address_validator) { AddressValidator.new(api_client) }
 
-  describe '#validate' do
-    context 'when the address is valid' do
-      it 'returns the corrected address' do
-        VCR.use_cassette('valid_address') do
-          expect(address_validator.validate(VALID_ADDRESS)).to eq('143 E Main St, Columbus, 43215-5370')
+  describe '#validated_addresses' do
+    context 'when passed both valid and invalid addresses' do
+      it 'returns the validated addresses in the expected format' do
+        VCR.use_cassette('address_validator') do
+          validated_addresses = address_validator.validate_addresses(ADDRESSES)
+
+          expect(validated_addresses).to eq(VALIDATED_ADDRESSES)
         end
       end
     end
-
-    context 'when the address is invalid' do
-      it 'returns the empty array' do
-        VCR.use_cassette('invalid_address') do
-          expect(address_validator.validate(INVALID_ADDRESS)).to eq('Invalid Address')
-        end
-      end
-    end
-
   end
+  
 end
