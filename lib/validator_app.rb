@@ -19,7 +19,6 @@ class ValidatorApp
     addresses = @csv_reader.read_addresses
 
     # grab the validated addresses from the API
-
     validated_addresses =  @address_validator.validate_addresses(addresses)
 
     # pass the validated addresses to the CLIWriter class to print to the console
