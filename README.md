@@ -22,7 +22,6 @@ The output should be:
 
 ## Table of Contents
 - [Getting Started](#getting-started)
-- [Dependencies](#dependencies)
 - [Running the Program](#running-the-program)
 - [Running Tests](#running-tests)
 - [Project Structure](#project-structure)
